@@ -2,3 +2,7 @@ jumps:
   "karpenter.sh/v1/nodepools":
     targetGVR: "karpenter.sh/v1/nodeclaims"
     labelSelector: "karpenter.sh/nodepool={{.metadata.name}}"
+  "karpenter.sh/v1/nodeclaims":
+    targetGVR: "v1/pods"
+    fieldSelector: "spec.nodeName={{.status.nodeName}}"
+    targetNamespace: "all"
